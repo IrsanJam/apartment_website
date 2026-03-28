@@ -5,7 +5,7 @@
 .cache
 
 # Node dependencies
-.node_modules
+node_modules
 
 # Logs
 logs
@@ -29,3 +29,4 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+node_modules

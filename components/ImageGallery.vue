@@ -1,15 +1,36 @@
 <template>
   <div class="image-gallery" id="image-gallery">
     <!-- Main Image -->
-    <div class="image-gallery__main" @click="openLightbox(activeIndex)">
+    <div class="image-gallery__main">
       <img
         :src="images[activeIndex]?.url"
         :alt="images[activeIndex]?.alt"
         class="image-gallery__main-image"
+        @click="openLightbox(activeIndex)"
       />
       <div class="image-gallery__zoom-hint">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
         Click to enlarge
+      </div>
+
+      <!-- Carousel Arrows -->
+      <button v-if="images.length > 1" class="image-gallery__arrow image-gallery__arrow--prev" @click="prevSlide" aria-label="Previous image">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button v-if="images.length > 1" class="image-gallery__arrow image-gallery__arrow--next" @click="nextSlide" aria-label="Next image">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <!-- Dots Indicator -->
+      <div v-if="images.length > 1" class="image-gallery__dots">
+        <button
+          v-for="(_, index) in images"
+          :key="index"
+          class="image-gallery__dot"
+          :class="{ 'image-gallery__dot--active': index === activeIndex }"
+          @click="activeIndex = index"
+          :aria-label="`Go to image ${index + 1}`"
+        />
       </div>
     </div>
 
@@ -90,6 +111,14 @@ const prevImage = () => {
 
 const nextImage = () => {
   lightboxIndex.value = (lightboxIndex.value + 1) % props.images.length
+}
+
+const prevSlide = () => {
+  activeIndex.value = (activeIndex.value - 1 + props.images.length) % props.images.length
+}
+
+const nextSlide = () => {
+  activeIndex.value = (activeIndex.value + 1) % props.images.length
 }
 
 const handleKeydown = (e: KeyboardEvent) => {
@@ -183,6 +212,77 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Carousel Arrows */
+.image-gallery__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  transition: all var(--transition-base);
+  padding: 0;
+}
+
+.image-gallery__main:hover .image-gallery__arrow {
+  opacity: 1;
+}
+
+.image-gallery__arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.image-gallery__arrow--prev {
+  left: var(--space-3);
+}
+
+.image-gallery__arrow--next {
+  right: var(--space-3);
+}
+
+/* Dots Indicator */
+.image-gallery__dots {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 5;
+}
+
+.image-gallery__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.image-gallery__dot--active {
+  background: var(--color-white);
+  width: 20px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.image-gallery__dot:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
 
 /* Lightbox */

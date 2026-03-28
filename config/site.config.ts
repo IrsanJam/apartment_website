@@ -10,6 +10,12 @@ export interface ApartmentImage {
   alt: string
 }
 
+export interface ApartmentVideo {
+  url: string          // YouTube embed URL
+  title: string
+  thumbnail?: string   // Optional custom thumbnail
+}
+
 export interface Apartment {
   id: string
   name: string
@@ -26,6 +32,7 @@ export interface Apartment {
   promotionLabel: string
   features: string[]
   images: ApartmentImage[]
+  videos: ApartmentVideo[]
   available: boolean
 }
 
@@ -167,6 +174,10 @@ const siteConfig: SiteConfig = {
         { url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80', alt: 'Studio Elegance kitchen' },
         { url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80', alt: 'Studio Elegance bathroom' },
       ],
+      videos: [
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Studio Elegance — Virtual Tour' },
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Studio Elegance — Amenities Overview' },
+      ],
       available: true,
     },
     {
@@ -189,6 +200,9 @@ const siteConfig: SiteConfig = {
         { url: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800&q=80', alt: 'Urban Suite bedroom' },
         { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', alt: 'Urban Suite dining area' },
         { url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80', alt: 'Urban Suite bathroom' },
+      ],
+      videos: [
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Urban Suite 1BR — Room Walkthrough' },
       ],
       available: true,
     },
@@ -213,6 +227,10 @@ const siteConfig: SiteConfig = {
         { url: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80', alt: 'Grand Residence master bedroom' },
         { url: 'https://images.unsplash.com/photo-1600573472591-ee6981cf81d6?w=800&q=80', alt: 'Grand Residence kitchen' },
       ],
+      videos: [
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Grand Residence 2BR — Full Tour' },
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Grand Residence — Kitchen & Living' },
+      ],
       available: true,
     },
     {
@@ -235,6 +253,11 @@ const siteConfig: SiteConfig = {
         { url: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=800&q=80', alt: 'Penthouse Royale master suite' },
         { url: 'https://images.unsplash.com/photo-1560448075-cbc16bb4af8e?w=800&q=80', alt: 'Penthouse Royale terrace' },
         { url: 'https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=800&q=80', alt: 'Penthouse Royale kitchen' },
+      ],
+      videos: [
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Penthouse Royale — Luxury Tour' },
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Penthouse Royale — Rooftop & Pool' },
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Penthouse Royale — Interior Design' },
       ],
       available: true,
     },

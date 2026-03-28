@@ -80,6 +80,59 @@
         <p class="apartment-detail__description" id="detail-description">{{ apartment.description }}</p>
       </div>
 
+      <!-- Video Tour -->
+      <div v-if="apartment.videos && apartment.videos.length" class="apartment-detail__video-section" id="detail-videos">
+        <h2 class="apartment-detail__section-title">
+          <span class="apartment-detail__section-icon">🎬</span>
+          Video Tour
+        </h2>
+        <p class="apartment-detail__video-subtitle">Take a virtual walkthrough of this unit to experience the space before visiting.</p>
+
+        <!-- Featured Video Player -->
+        <div class="video-player" id="video-player">
+          <div class="video-player__main">
+            <iframe
+              :src="apartment.videos[activeVideoIndex]?.url + '?rel=0&modestbranding=1'"
+              :title="apartment.videos[activeVideoIndex]?.title"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+              class="video-player__iframe"
+            ></iframe>
+          </div>
+          <div class="video-player__info">
+            <span class="video-player__badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              NOW PLAYING
+            </span>
+            <h3 class="video-player__title">{{ apartment.videos[activeVideoIndex]?.title }}</h3>
+          </div>
+        </div>
+
+        <!-- Video Selector (if more than 1 video) -->
+        <div v-if="apartment.videos.length > 1" class="video-selector" id="video-selector">
+          <button
+            v-for="(video, index) in apartment.videos"
+            :key="index"
+            class="video-selector__item"
+            :class="{ 'video-selector__item--active': index === activeVideoIndex }"
+            @click="activeVideoIndex = index"
+          >
+            <div class="video-selector__thumb">
+              <div class="video-selector__play">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <span class="video-selector__number">{{ index + 1 }}</span>
+            </div>
+            <div class="video-selector__info">
+              <span class="video-selector__title">{{ video.title }}</span>
+              <span v-if="index === activeVideoIndex" class="video-selector__status">Playing</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
       <!-- Features -->
       <div class="apartment-detail__features-section">
         <h2 class="apartment-detail__section-title">Features & Amenities</h2>
@@ -134,6 +187,8 @@ const apartment = computed(() => {
 const otherApartments = computed(() => {
   return config.apartments.filter((a) => a.slug !== slug).slice(0, 3)
 })
+
+const activeVideoIndex = ref(0)
 
 // SEO
 if (apartment.value) {
@@ -212,6 +267,7 @@ if (apartment.value) {
 .apartment-detail__container {
   padding-top: var(--space-10);
   padding-bottom: var(--space-20);
+  overflow-x: hidden;
 }
 
 .apartment-detail__grid {
@@ -376,6 +432,225 @@ if (apartment.value) {
 
   .apartments-grid--others {
     grid-template-columns: 1fr;
+  }
+}
+
+/* === Video Tour Section === */
+.apartment-detail__video-section {
+  margin-bottom: var(--space-16);
+  padding: var(--space-10);
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, #f0f4f8 100%);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-gray-200);
+}
+
+.apartment-detail__section-icon {
+  margin-right: var(--space-2);
+}
+
+.apartment-detail__video-subtitle {
+  color: var(--color-gray-500);
+  font-size: var(--font-size-base);
+  margin-top: calc(-1 * var(--space-4));
+  margin-bottom: var(--space-8);
+  max-width: 600px;
+}
+
+/* Video Player */
+.video-player {
+  margin-bottom: var(--space-6);
+}
+
+.video-player__main {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--color-primary);
+  box-shadow: var(--shadow-xl);
+}
+
+.video-player__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-player__info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-2);
+}
+
+.video-player__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  background: linear-gradient(135deg, var(--color-danger), #dc2626);
+  color: var(--color-white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: pulse-badge 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.video-player__title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Video Selector */
+.video-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.video-selector__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-white);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: left;
+}
+
+.video-selector__item:hover {
+  border-color: var(--color-secondary);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.video-selector__item--active {
+  border-color: var(--color-secondary);
+  background: linear-gradient(135deg, rgba(201, 169, 110, 0.08), rgba(201, 169, 110, 0.04));
+  box-shadow: var(--shadow-gold);
+}
+
+.video-selector__thumb {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.video-selector__item--active .video-selector__thumb {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+}
+
+.video-selector__play {
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-selector__number {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  background: var(--color-gray-600);
+  color: var(--color-white);
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-selector__item--active .video-selector__number {
+  background: var(--color-danger);
+}
+
+.video-selector__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.video-selector__title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-gray-700);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-selector__item--active .video-selector__title {
+  color: var(--color-primary);
+}
+
+.video-selector__status {
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-dark);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .apartment-detail__video-section {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .video-player__main {
+    border-radius: var(--radius-lg);
+  }
+
+  .video-player__info {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .video-player__title {
+    font-size: var(--font-size-sm);
+  }
+
+  .video-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .video-selector__item {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .video-selector__thumb {
+    width: 40px;
+    height: 40px;
+  }
+
+  .video-selector__title {
+    white-space: normal;
+    font-size: var(--font-size-xs);
   }
 }
 </style>

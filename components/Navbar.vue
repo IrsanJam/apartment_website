@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar" :class="{ 'navbar--scrolled': isScrolled }" id="navbar">
+  <header class="navbar" :class="{ 'navbar--scrolled': isScrolled, 'navbar--solid': isSolidBg }" :style="navbarStyle" id="navbar">
     <div class="container navbar__container">
       <!-- Logo -->
       <NuxtLink to="/" class="navbar__logo" id="navbar-logo">
@@ -52,9 +52,25 @@
 import siteConfig from '~/config/site.config'
 
 const config = siteConfig
+const route = useRoute()
+
+const isSolidBg = computed(() => {
+  return route.path.startsWith('/apartments/')
+})
 
 const isScrolled = ref(false)
 const isMobileOpen = ref(false)
+const bannerHeight = ref(0)
+
+const navbarStyle = computed(() => {
+  if (isScrolled.value) {
+    return { top: '0px' }
+  }
+  if (bannerHeight.value > 0) {
+    return { top: bannerHeight.value + 'px' }
+  }
+  return {}
+})
 
 const whatsappLink = computed(() => {
   return `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent('Hi, I would like to know more about your apartments.')}`
@@ -69,15 +85,23 @@ const closeMobile = () => {
 }
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50
+  isScrolled.value = window.scrollY > 20
+}
+
+const measureBanner = () => {
+  const banner = document.querySelector('.promo-banner') as HTMLElement | null
+  bannerHeight.value = banner ? banner.offsetHeight : 0
 }
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
+  measureBanner()
+  window.addEventListener('resize', measureBanner, { passive: true })
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', measureBanner)
 })
 </script>
 
@@ -93,15 +117,20 @@ onUnmounted(() => {
   background: transparent;
 }
 
-.promo-banner + .navbar {
-  top: 40px;
-}
+
 
 .navbar--scrolled {
   background: rgba(15, 23, 42, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.navbar--solid {
+  background: rgba(15, 23, 42, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
 }
 
 .promo-banner + .navbar--scrolled {
@@ -257,10 +286,6 @@ onUnmounted(() => {
 
   .navbar__hamburger {
     display: flex;
-  }
-
-  .navbar__container {
-    margin-top: 1.8rem;
   }
 }
 </style>
