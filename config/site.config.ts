@@ -105,23 +105,21 @@ const siteConfig: SiteConfig = {
   // ----------------------------------------------------------
   // Site Metadata (used for SEO)
   // ----------------------------------------------------------
-  siteName: 'LuxeApartments',
-  siteDescription: 'Discover premium apartments in the heart of the city. Modern living spaces with world-class amenities, available for purchase or booking.',
-  siteKeywords: ['apartments', 'luxury apartments', 'buy apartment', 'book apartment', 'real estate', 'modern living', 'premium residence'],
-  siteUrl: 'https://luxeapartments.com',
+  siteName: 'Margonda Residence 2',
+  siteDescription: 'Sewa dan Jual Apartemen Margonda Residence 2 (Mares 2) Depok. Hunian nyaman, strategis, dekat Kampus UI, Gunadarma, dan Stasiun Pondok Cina.',
+  siteKeywords: ['apartemen margonda', 'sewa apartemen depok', 'margonda residence 2', 'mares 2', 'apartemen dekat ui', 'apartemen stasiun pondok cina', 'jual apartemen depok'],
+  siteUrl: 'https://margondaresidence2.com',
 
   // ----------------------------------------------------------
   // WhatsApp Configuration
   // ----------------------------------------------------------
-  whatsappNumber: '6281234567890', // International format without +
-  whatsappMessageTemplate: 'Hi, I am interested in *{apartment_name}* ({apartment_type}). The listed price is *{price}*. I would like to get more details and proceed with booking. Thank you!',
+  whatsappNumber: '6281234567890', // Ubah dengan nomor marketing asli
+  whatsappMessageTemplate: 'Halo, saya tertarik dengan unit *{apartment_name}* ({apartment_type}). Info harga tertera *{price}*. Boleh minta detail lengkap dan ketersediaannya? Terima kasih!',
 
   // ----------------------------------------------------------
   // CDN Base URL for Images
-  // Change this to your CDN domain. Image paths in apartments
-  // will be appended to this base URL.
   // ----------------------------------------------------------
-  cdnBaseUrl: 'https://images.unsplash.com',
+  cdnBaseUrl: '',
 
   // ----------------------------------------------------------
   // Currency Display
@@ -133,20 +131,19 @@ const siteConfig: SiteConfig = {
   // Hero Section
   // ----------------------------------------------------------
   hero: {
-    headline: 'Find Your Dream Apartment',
-    subheadline: 'Premium residences with stunning views, world-class amenities, and modern design — all in the heart of the city.',
-    ctaText: 'Explore Apartments',
-    backgroundImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1920&q=80',
+    headline: 'Hunian Nyaman di Jantung Kota Depok',
+    subheadline: 'Apartemen Margonda Residence 2. Pilihan tepat untuk mahasiswa & profesional. Selangkah ke UI, Gunadarma, & Margo City.',
+    ctaText: 'Lihat Tipe Unit',
+    backgroundImage: '/images/main-apart.jpg',
   },
 
   // ----------------------------------------------------------
   // Promotional Banner
-  // Set enabled to false to hide the promo banner entirely.
   // ----------------------------------------------------------
   promoBanner: {
     enabled: true,
-    text: 'Early Bird Special — Get up to 15% off on select units!',
-    badgeText: 'LIMITED OFFER',
+    text: 'Promo Mahasiswa Baru! Potongan Harga & Bebas Biaya IPL 3 Bulan Pertama.',
+    badgeText: 'HOT PROMO',
   },
 
   // ----------------------------------------------------------
@@ -155,109 +152,76 @@ const siteConfig: SiteConfig = {
   apartments: [
     {
       id: '1',
-      name: 'Studio Elegance',
-      slug: 'studio-elegance',
-      tagline: 'Perfect starter home with premium finishes',
-      description: 'A beautifully designed studio apartment featuring floor-to-ceiling windows, premium hardwood flooring, and a fully equipped modern kitchenette. Ideal for young professionals or investors looking for a prime city-center unit with excellent rental yield potential.',
+      name: 'Studio Standard',
+      slug: 'studio-standard',
+      tagline: 'Praktis, Nyaman, dan Ekonomis',
+      description: 'Unit Studio Standard dengan luas 20m² yang sangat ideal untuk mahasiswa atau pekerja single. Dilengkapi dengan fasilitas dasar, AC, tempat tidur nyaman, dan lemari pakaian. Lokasi tower sangat dekat dengan akses Kolam Renang dan Minimarket.',
       bedrooms: 0,
       bathrooms: 1,
-      area: 35,
-      floor: '12th - 25th',
-      originalPrice: 850000000,
-      discountedPrice: 722500000,
+      area: 20,
+      floor: 'Lantai 5 - 12',
+      originalPrice: 185000000,
+      discountedPrice: 175000000,
       promotionEnabled: true,
       promotionLabel: '15% OFF',
-      features: ['Floor-to-ceiling Windows', 'Smart Home System', 'Built-in Wardrobe', 'Premium Kitchen', 'Gym Access', 'Swimming Pool'],
+      features: ['Full Furnished', 'AC 1/2 PK', 'Water Heater (Opsional)', 'Akses Kolam Renang', 'Parkir Motor/Mobil', 'Keamanan 24 Jam'],
       images: [
-        { url: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80', alt: 'Studio Elegance living area' },
-        { url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80', alt: 'Studio Elegance bedroom view' },
-        { url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80', alt: 'Studio Elegance kitchen' },
-        { url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80', alt: 'Studio Elegance bathroom' },
+        { url: '/images/mares_studio_room.png', alt: 'Studio Standard kamar' },
+        { url: '/images/mares_kitchen.png', alt: 'Studio Standard pantry' },
+        { url: '/images/mares_pool.png', alt: 'Akses Kolam Renang' },
       ],
       videos: [
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Studio Elegance — Virtual Tour' },
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Studio Elegance — Amenities Overview' },
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Margonda Residence 2 — Room Tour' },
       ],
       available: true,
     },
     {
       id: '2',
-      name: 'Urban Suite 1BR',
-      slug: 'urban-suite-1br',
-      tagline: 'Spacious one-bedroom with panoramic city views',
-      description: 'Spacious one-bedroom suite with an open-plan living and dining area, complemented by a private balcony offering panoramic city views. Features include imported marble countertops, a rain shower system, and premium appliances throughout.',
-      bedrooms: 1,
+      name: 'Studio Premium Renovated',
+      slug: 'studio-premium-renovated',
+      tagline: 'Desain Modern Minimalis Instagramable',
+      description: 'Unit tipe Studio (24m²) yang telah direnovasi total dengan desain interior modern minimalis. Menggunakan lantai vinyl, pencahayaan LED warm white, Smart TV, kitchen set custom, dan meja belajar/kerja lipat untuk memaksimalkan ruangan.',
+      bedrooms: 0,
       bathrooms: 1,
-      area: 55,
-      floor: '15th - 30th',
-      originalPrice: 1200000000,
-      discountedPrice: 1080000000,
+      area: 24,
+      floor: 'Lantai 15 - 18',
+      originalPrice: 245000000,
+      discountedPrice: 230000000,
       promotionEnabled: true,
       promotionLabel: '10% OFF',
-      features: ['Private Balcony', 'Marble Countertops', 'Rain Shower', 'Walk-in Closet', 'Concierge Service', 'Rooftop Garden'],
+      features: ['Interior Custom', 'Smart TV 32"', 'Kitchen Set', 'Lantai Vinyl', 'Meja Belajar Multifungsi', 'Pemandangan Kota / UI'],
       images: [
-        { url: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80', alt: 'Urban Suite living room' },
-        { url: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=800&q=80', alt: 'Urban Suite bedroom' },
-        { url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', alt: 'Urban Suite dining area' },
-        { url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80', alt: 'Urban Suite bathroom' },
+        { url: '/images/mares_studio_room.png', alt: 'Studio Premium living' },
+        { url: '/images/mares_kitchen.png', alt: 'Studio Premium kitchen' },
+        { url: '/images/mares_exterior.png', alt: 'Eksterior Gedung' },
       ],
       videos: [
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Urban Suite 1BR — Room Walkthrough' },
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Studio Premium — Full Tour' },
       ],
       available: true,
     },
     {
       id: '3',
-      name: 'Grand Residence 2BR',
-      slug: 'grand-residence-2br',
-      tagline: 'Luxurious two-bedroom family home',
-      description: 'A luxurious two-bedroom residence designed for families who appreciate refined living. Features a master suite with an en-suite bathroom, a dedicated study nook, and a generous living area that flows seamlessly into a chef-grade kitchen.',
-      bedrooms: 2,
-      bathrooms: 2,
-      area: 85,
-      floor: '20th - 35th',
-      originalPrice: 2100000000,
-      discountedPrice: 1890000000,
-      promotionEnabled: true,
-      promotionLabel: '10% OFF',
-      features: ['Master En-suite', 'Study Nook', 'Chef Kitchen', 'Double Balcony', 'Private Elevator Lobby', 'Children\'s Playground'],
-      images: [
-        { url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80', alt: 'Grand Residence exterior' },
-        { url: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80', alt: 'Grand Residence living room' },
-        { url: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80', alt: 'Grand Residence master bedroom' },
-        { url: 'https://images.unsplash.com/photo-1600573472591-ee6981cf81d6?w=800&q=80', alt: 'Grand Residence kitchen' },
-      ],
-      videos: [
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Grand Residence 2BR — Full Tour' },
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Grand Residence — Kitchen & Living' },
-      ],
-      available: true,
-    },
-    {
-      id: '4',
-      name: 'Penthouse Royale 3BR',
-      slug: 'penthouse-royale-3br',
-      tagline: 'The pinnacle of luxury living',
-      description: 'The crown jewel of our collection. This three-bedroom penthouse offers unparalleled luxury with a private rooftop terrace, panoramic floor-to-ceiling windows on all sides, a wine cellar, and a home theater room. Finished with the finest Italian marble and custom millwork throughout.',
-      bedrooms: 3,
-      bathrooms: 3,
-      area: 150,
-      floor: '38th - 40th',
-      originalPrice: 5500000000,
-      discountedPrice: 5500000000,
+      name: '1 Bedroom',
+      slug: '1-bedroom-gandeng',
+      tagline: 'Lebih Luas, Lebih Bebas',
+      description: 'Merupakan unit gabungan (gandeng) dari 2 unit studio, menciptakan luas 40m² dengan pemisahan area ruang tamu dan kamar tidur yang jelas. Sangat cocok untuk keluarga muda atau eksekutif yang membutuhkan privasi dan ruang ekstra.',
+      bedrooms: 1,
+      bathrooms: 1,
+      area: 40,
+      floor: 'Lantai 8',
+      originalPrice: 380000000,
+      discountedPrice: 380000000,
       promotionEnabled: false,
       promotionLabel: '',
-      features: ['Private Rooftop Terrace', 'Home Theater', 'Wine Cellar', 'Italian Marble', 'Panoramic Views', 'Private Pool', 'Butler Service', 'Helipad Access'],
+      features: ['1 Kamar Tidur Terpisah', 'Ruang Tamu (Living Room)', 'Kulkas 2 Pintu', 'Balkon Ganda', '2 AC', 'Lemari Pakaian Besar'],
       images: [
-        { url: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80', alt: 'Penthouse Royale living area' },
-        { url: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=800&q=80', alt: 'Penthouse Royale master suite' },
-        { url: 'https://images.unsplash.com/photo-1560448075-cbc16bb4af8e?w=800&q=80', alt: 'Penthouse Royale terrace' },
-        { url: 'https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=800&q=80', alt: 'Penthouse Royale kitchen' },
+        { url: '/images/mares_studio_room.png', alt: '1 Bedroom Kamar Utama' },
+        { url: '/images/mares_kitchen.png', alt: '1 Bedroom Dapur' },
+        { url: '/images/mares_pool.png', alt: 'Fasilitas Kolam' },
       ],
       videos: [
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Penthouse Royale — Luxury Tour' },
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Penthouse Royale — Rooftop & Pool' },
-        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: 'Penthouse Royale — Interior Design' },
+        { url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', title: '1BR Gandeng — Interior Design' },
       ],
       available: true,
     },
@@ -267,38 +231,38 @@ const siteConfig: SiteConfig = {
   // Why Choose Us Section
   // ----------------------------------------------------------
   whyChooseUs: {
-    title: 'Why Choose LuxeApartments',
-    subtitle: 'We deliver more than just a home — we craft an elevated living experience.',
+    title: 'Kenapa Memilih Margonda Residence 2?',
+    subtitle: 'Kawasan hunian paling populer di tengah dinamika Kota Depok dengan nilai investasi tinggi.',
     items: [
       {
-        icon: '🏗️',
-        title: 'Premium Construction',
-        description: 'Built with the highest standards using imported materials and cutting-edge engineering.',
+        icon: '🎓',
+        title: 'Selangkah ke Kampus',
+        description: 'Jarak berjalan kaki (walking distance) ke Universitas Indonesia dan Universitas Gunadarma.',
       },
       {
-        icon: '📍',
-        title: 'Prime Location',
-        description: 'Strategically located in the city center with easy access to business districts, malls, and transit.',
+        icon: '🚆',
+        title: 'Akses Transportasi Mudah',
+        description: 'Tepat berada di Jl. Margonda Raya. Dekat dengan Stasiun UI dan Stasiun Pondok Cina.',
       },
       {
-        icon: '🔒',
-        title: '24/7 Security',
-        description: 'Multi-layered security system including CCTV, access cards, and on-site security personnel.',
+        icon: '🛍️',
+        title: 'Pusat Perbelanjaan',
+        description: 'Berseberangan dengan Depok Town Square (Detos) dan hanya 5 menit ke Margo City Mall.',
+      },
+      {
+        icon: '🏥',
+        title: 'Dekat Fasilitas Medis',
+        description: 'Akses cepat ke RS Bunda Margonda, RS UI, dan apotek 24 jam di sekitar kawasan.',
       },
       {
         icon: '🏊',
-        title: 'World-Class Amenities',
-        description: 'Infinity pool, sky garden, fitness center, co-working space, and more — all at your doorstep.',
+        title: 'Fasilitas Lengkap',
+        description: 'Kolam renang, lapangan tenis, minimarket (Indomaret/Alfamart), laundry, dan ATM center di dalam kompleks.',
       },
       {
         icon: '📈',
-        title: 'High ROI Potential',
-        description: 'Prime location and premium quality ensure excellent investment returns and rental yields.',
-      },
-      {
-        icon: '🤝',
-        title: 'Flexible Payment',
-        description: 'Multiple payment options including installments, KPA, and special early-bird discounts.',
+        title: 'Investasi Menjanjikan',
+        description: 'Permintaan sewa tinggi (diburu ribuan mahasiswa baru setiap tahun) menjamin passive income Anda.',
       },
     ],
   },
@@ -307,14 +271,14 @@ const siteConfig: SiteConfig = {
   // Contact / Company Info
   // ----------------------------------------------------------
   contact: {
-    companyName: 'LuxeApartments Development',
-    address: 'Jl. Sudirman No. 123, Jakarta Selatan 12190',
+    companyName: 'Apartemen Margonda Residence 2',
+    address: 'Jl. Margonda Raya Kav. 461, Beji, Kota Depok, Jawa Barat 16424',
     phone: '+62 812 3456 7890',
-    email: 'info@luxeapartments.com',
+    email: 'info@margondaresidence2.com',
     socialLinks: [
-      { platform: 'Instagram', url: 'https://instagram.com/luxeapartments', icon: 'instagram' },
-      { platform: 'Facebook', url: 'https://facebook.com/luxeapartments', icon: 'facebook' },
-      { platform: 'YouTube', url: 'https://youtube.com/@luxeapartments', icon: 'youtube' },
+      { platform: 'Instagram', url: 'https://instagram.com/margondaresidence2', icon: 'instagram' },
+      { platform: 'Facebook', url: 'https://facebook.com/margondaresidence2', icon: 'facebook' },
+      { platform: 'YouTube', url: 'https://youtube.com', icon: 'youtube' },
     ],
   },
 }
