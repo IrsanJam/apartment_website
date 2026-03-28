@@ -277,6 +277,11 @@ if (apartment.value) {
   margin-bottom: var(--space-16);
 }
 
+.apartment-detail__gallery,
+.apartment-detail__info {
+  min-width: 0;
+}
+
 .apartment-detail__promo {
   margin-bottom: var(--space-2);
 }
@@ -651,6 +656,111 @@ if (apartment.value) {
   .video-selector__title {
     white-space: normal;
     font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 390px) {
+  .apartment-detail__breadcrumb-wrapper {
+    padding-top: calc(var(--navbar-height) + var(--space-3) + 36px);
+    padding-bottom: var(--space-4);
+  }
+
+  .breadcrumb {
+    font-size: var(--font-size-xs);
+    flex-wrap: wrap;
+  }
+
+  .apartment-detail__container {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-12);
+  }
+
+  .apartment-detail__name {
+    font-size: var(--font-size-xl);
+  }
+
+  .apartment-detail__tagline {
+    font-size: var(--font-size-sm);
+  }
+
+  .apartment-detail__spec {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+
+  .apartment-detail__price-section {
+    padding: var(--space-4);
+  }
+
+  .apartment-detail__price-label {
+    font-size: var(--font-size-xs);
+  }
+
+  .apartment-detail__section-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-4);
+  }
+
+  .apartment-detail__description {
+    font-size: var(--font-size-base);
+  }
+
+  .apartment-detail__feature {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+
+  .apartment-detail__video-section {
+    padding: var(--space-3);
+    margin-bottom: var(--space-10);
+  }
+
+  .apartment-detail__video-subtitle {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  .video-player__info {
+    padding: var(--space-3) 0;
+  }
+
+  .video-player__badge {
+    font-size: 0.55rem;
+    padding: 2px var(--space-2);
+  }
+
+  .video-player__title {
+    font-size: var(--font-size-xs);
+  }
+
+  .video-selector__item {
+    padding: var(--space-2);
+    gap: var(--space-2);
+  }
+
+  .video-selector__thumb {
+    width: 36px;
+    height: 36px;
+  }
+
+  .video-selector__play svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .video-selector__number {
+    width: 16px;
+    height: 16px;
+    font-size: 0.55rem;
+  }
+
+  .apartment-detail__others-section {
+    padding-top: var(--space-10);
+  }
+
+  .apartment-detail__description-section,
+  .apartment-detail__features-section {
+    margin-bottom: var(--space-8);
   }
 }
 </style>

@@ -196,13 +196,27 @@ const whatsappLink = computed(() => {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 390px) {
   .hero__headline {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
   }
 
   .hero__subheadline {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
+  }
+
+  .hero__stats {
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+  }
+
+  .hero__stat-number {
+    font-size: var(--font-size-xl);
+  }
+
+  .hero__stat-label {
+    font-size: var(--font-size-xs);
   }
 }
 </style>
