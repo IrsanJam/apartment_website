@@ -60,7 +60,7 @@ const isSolidBg = computed(() => {
 
 const isScrolled = ref(false)
 const isMobileOpen = ref(false)
-const bannerHeight = ref(0)
+const bannerHeight = ref(36) // Default fallback guess to prevent layout jump
 
 const navbarStyle = computed(() => {
   if (isScrolled.value) {
